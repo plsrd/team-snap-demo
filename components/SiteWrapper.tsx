@@ -1,12 +1,16 @@
 import Link from 'next/link';
-import UtmTracker from './UtmTracker';
+import UtmTracker, { UTMTrackerProps } from './UtmTracker';
 import SiteFooter from './SiteFooter';
+
+type SiteWrapperProps = {
+  children?: React.ReactNode;
+  searchParams?: UTMTrackerProps['initialSearchParams'];
+};
 
 export default function SiteWrapper({
   children = null,
-}: {
-  children?: React.ReactNode;
-}) {
+  searchParams = {},
+}: SiteWrapperProps) {
   return (
     <div className='flex min-h-dvh flex-col bg-background text-foreground'>
       <header className='border-b bg-background'>
@@ -31,7 +35,7 @@ export default function SiteWrapper({
           </nav>
         </div>
       </header>
-      <UtmTracker />
+      <UtmTracker initialSearchParams={searchParams} />
       <main className='container mx-auto flex-1 px-4 py-8'>{children}</main>
       <SiteFooter />
     </div>
