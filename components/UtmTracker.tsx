@@ -29,7 +29,15 @@ export default function UtmTracker(
       if (Array.isArray(val) && val.length > 0) urlParams.set(key, val[0]!);
     }
 
-    const trackableKeys = ['utm_source', 'utm_medium'];
+    const trackableKeys = [
+      'utm_source',
+      'utm_medium',
+      'utm_campaign',
+      'utm_term',
+      'utm_content',
+      'gclid',
+      'fbclid',
+    ];
 
     // Extract only the trackable UTM parameters from the URL
     const found = Object.fromEntries(

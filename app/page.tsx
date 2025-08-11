@@ -30,7 +30,7 @@ export default async function Home({
             Browse Posts
           </Link>
           <Link
-            href='/posts?utm_source=demo&utm_medium=link'
+            href='/posts?utm_source=demo&utm_medium=link&utm_campaign=homepage'
             className='inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-6 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring'
           >
             Try with Demo UTMs
