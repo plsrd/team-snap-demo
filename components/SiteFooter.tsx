@@ -11,6 +11,7 @@ type UTMData = {
 export default function SiteFooter() {
   const [utm, setUtm] = useState<UTMData | null>(null);
   useEffect(() => {
+    // Function to retrieve UTM data from localStorage
     const getUtmData = () => {
       try {
         const data = localStorage.getItem('utm_data');
@@ -29,17 +30,21 @@ export default function SiteFooter() {
     };
     getUtmData();
 
+    // Listen for changes in localStorage
+    // This is useful if UTM data is updated in another tab or window
     const onStorageChange = (event: StorageEvent) => {
       if (event.key === 'utm_data') {
         getUtmData();
       }
     };
+
     window.addEventListener('storage', onStorageChange);
     return () => {
       window.removeEventListener('storage', onStorageChange);
     };
   }, []);
 
+  // Function to remove UTM data from localStorage
   const reset = () => {
     localStorage.removeItem('utm_data');
     setUtm(null);
