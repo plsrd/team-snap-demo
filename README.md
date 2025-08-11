@@ -36,7 +36,7 @@ A Next.js blog application built for the TeamSnap coding challenge, featuring UT
 1. Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/plsrd/team-snap-demo.git
 cd team-snap-demo
 ```
 
