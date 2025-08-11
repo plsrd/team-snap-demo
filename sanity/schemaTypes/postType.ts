@@ -10,6 +10,7 @@ export const postType = defineType({
     defineField({
       name: 'title',
       type: 'string',
+      validation: rule => rule.required(),
     }),
     defineField({
       name: 'slug',
@@ -17,11 +18,13 @@ export const postType = defineType({
       options: {
         source: 'title',
       },
+      validation: rule => rule.required(),
     }),
     defineField({
       name: 'author',
       type: 'reference',
       to: { type: 'author' },
+      validation: rule => rule.required(),
     }),
     defineField({
       name: 'mainImage',
@@ -44,6 +47,7 @@ export const postType = defineType({
     defineField({
       name: 'body',
       type: 'blockContent',
+      validation: rule => rule.required(),
     }),
   ],
   preview: {
