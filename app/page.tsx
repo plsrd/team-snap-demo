@@ -1,6 +1,5 @@
-import { getAllPosts } from '@/sanity/lib/sanity.queries';
-import PostCard from '@/components/PostCard';
 import SiteWrapper from '@/components/SiteWrapper';
+import Link from 'next/link';
 
 export default async function Home({
   searchParams,
@@ -8,18 +7,35 @@ export default async function Home({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const params = await searchParams;
-  const posts = await getAllPosts();
+
   return (
     <SiteWrapper searchParams={params}>
-      <section className='mx-auto max-w-5xl'>
-        <div className='mb-6 space-y-2'>
-          <h1 className='text-3xl font-semibold tracking-tight'>All Posts</h1>
+      {' '}
+      <section className='mx-auto max-w-3xl space-y-6 text-center'>
+        <div className='inline-block rounded-full bg-muted px-3 py-1 text-xs text-muted-foreground'>
+          Welcome!
         </div>
-        <ul className='grid gap-4 sm:grid-cols-2'>
-          {posts.map(post => (
-            <PostCard key={post._id} {...post} />
-          ))}
-        </ul>
+        <h1 className='text-balance text-4xl font-bold tracking-tight sm:text-5xl'>
+          This is an example of a Sanity-powered blog
+        </h1>
+        <p className='text-pretty text-muted-foreground sm:text-lg'>
+          UTM parameters are stored locally and can be seen in the footer.
+          Navigate around to see how they persist across pages.
+        </p>
+        <div className='flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4'>
+          <Link
+            href='/posts'
+            className='inline-flex h-10 items-center justify-center rounded-md bg-foreground px-6 text-sm font-medium text-background transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring'
+          >
+            Browse Posts
+          </Link>
+          <Link
+            href='/posts?utm_source=demo&utm_medium=link'
+            className='inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-6 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring'
+          >
+            Try with Demo UTMs
+          </Link>
+        </div>
       </section>
     </SiteWrapper>
   );
