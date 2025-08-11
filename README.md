@@ -6,7 +6,14 @@ A Next.js blog application built for the TeamSnap coding challenge, featuring UT
 
 - A Sanity-powered blog that allows you to create, edit, and manage posts
 - A frontend that displays posts with images, titles, and authors
-- UTM capture that tracks the following parameters: - `utm_source`, - `utm_medium`, - `utm_campaign`, - `utm_term`, - `utm_content`, - `gclid`, - `fbclid`,
+- UTM capture that tracks the following parameters:
+  - `utm_source`,
+  - `utm_medium`,
+  - `utm_campaign`,
+  - `utm_term`,
+  - `utm_content`,
+  - `gclid`,
+  - `fbclid`,
 - Responsive design
 
 ## Tech Stack
