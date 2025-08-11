@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import UtmTracker from './UtmTracker';
+import SiteFooter from './SiteFooter';
 
 export default function SiteWrapper({
   children = null,
@@ -29,8 +31,9 @@ export default function SiteWrapper({
           </nav>
         </div>
       </header>
-
+      <UtmTracker />
       <main className='container mx-auto flex-1 px-4 py-8'>{children}</main>
+      <SiteFooter />
     </div>
   );
 }

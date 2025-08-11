@@ -1,9 +1,45 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+
+type UTMData = {
+  utm_source?: string;
+  utm_medium?: string;
+};
 
 export default function SiteFooter() {
+  const [utm, setUtm] = useState<UTMData | null>(null);
+  useEffect(() => {
+    const getUtmData = () => {
+      try {
+        const data = localStorage.getItem('utm_data');
+        if (data) {
+          const parsedData = JSON.parse(data);
+          // Remove any keys with null or undefined values
+          Object.keys(parsedData).forEach(
+            k => parsedData[k] == null && delete parsedData[k]
+          );
+          setUtm(parsedData);
+        }
+      } catch (error) {
+        console.error('Error retrieving UTM data:', error);
+        setUtm(null);
+      }
+    };
+    getUtmData();
+
+    const onStorageChange = (event: StorageEvent) => {
+      if (event.key === 'utm_data') {
+        getUtmData();
+      }
+    };
+    window.addEventListener('storage', onStorageChange);
+    return () => {
+      window.removeEventListener('storage', onStorageChange);
+    };
+  }, []);
+
   return (
     <footer className='border-t bg-background'>
       <div className='container mx-auto px-4 py-6 text-sm text-muted-foreground'>
@@ -21,6 +57,30 @@ export default function SiteFooter() {
               Posts
             </Link>
           </nav>
+        </div>
+        <div className='mt-4 rounded-md border bg-muted/40 p-3'>
+          <div className='flex items-center justify-between'>
+            <span className='font-medium text-foreground'>
+              Campaign Tracking
+            </span>
+          </div>
+          {utm && Object.keys(utm).length > 0 ? (
+            <ul className='mt-2 grid gap-1 text-xs sm:grid-cols-2 md:grid-cols-3'>
+              {Object.keys(utm).map(i => (
+                <li key={i}>
+                  <span className='text-foreground'>{i}:</span>{' '}
+                  <span className='break-all'>
+                    {utm[i as keyof UTMData] ?? '—'}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className='mt-2 text-xs'>
+              No UTM parameters found yet. Add utm_source, utm_medium, or
+              utm_campaign to the URL.
+            </p>
+          )}
         </div>
       </div>
     </footer>
