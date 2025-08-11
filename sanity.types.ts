@@ -19,9 +19,9 @@ export type Post = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: string;
-  slug?: Slug;
-  author?: {
+  title: string;
+  slug: Slug;
+  author: {
     _ref: string;
     _type: "reference";
     _weak?: boolean;
@@ -41,7 +41,7 @@ export type Post = {
     _type: "image";
   };
   publishedAt?: string;
-  body?: Array<{
+  body: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -80,8 +80,8 @@ export type Author = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  name?: string;
-  slug?: Slug;
+  name: string;
+  slug: Slug;
 };
 
 export type BlockContent = Array<{
@@ -223,7 +223,7 @@ export type Geopoint = {
 
 export type Slug = {
   _type: "slug";
-  current?: string;
+  current: string;
   source?: string;
 };
 
@@ -241,12 +241,12 @@ export declare const internalGroqTypeReferenceTo: unique symbol;
 // Query: *[_type == "post" && defined(slug.current)] {    _id,    title,    slug,    author-> {      name,      slug    },    mainImage {      asset->,      alt      },    publishedAt  }| order(publishedAt asc)
 export type AllPostsQueryResult = Array<{
   _id: string;
-  title: string | null;
-  slug: Slug | null;
+  title: string;
+  slug: Slug;
   author: {
-    name: string | null;
-    slug: Slug | null;
-  } | null;
+    name: string;
+    slug: Slug;
+  };
   mainImage: {
     asset: {
       _id: string;
@@ -277,10 +277,10 @@ export type AllPostsQueryResult = Array<{
 // Variable: postQuery
 // Query: *[_type == 'post' && slug.current == $slug]{    title,    author->{      name    },  }[0]
 export type PostQueryResult = {
-  title: string | null;
+  title: string;
   author: {
-    name: string | null;
-  } | null;
+    name: string;
+  };
 } | null;
 
 // Query TypeMap
