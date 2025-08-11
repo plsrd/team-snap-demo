@@ -13,11 +13,13 @@ export default function PostCard({
   mainImage,
 }: Post) {
   if (!slug || !author) return null;
+
   const authorName = author.name || 'Unknown Author';
   const postHref = `/posts/${slug.current}`;
   const postImageUrl = mainImage?.asset
     ? urlFor(mainImage.asset).url()
     : '/placeholder.svg';
+
   return (
     <li
       key={_id}
