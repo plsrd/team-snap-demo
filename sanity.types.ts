@@ -237,9 +237,9 @@ export type SanityAssetSourceData = {
 export type AllSanitySchemaTypes = Post | Author | BlockContent | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/sanity.queries.ts
-// Variable: ALL_POSTS_QUERY
+// Variable: allPostsQuery
 // Query: *[_type == "post" && defined(slug.current)] {    _id,    title,    slug,    author-> {      name,      slug    },    mainImage {      asset->,      alt      },    publishedAt  }| order(publishedAt asc)
-export type ALL_POSTS_QUERYResult = Array<{
+export type AllPostsQueryResult = Array<{
   _id: string;
   title: string | null;
   slug: Slug | null;
@@ -279,6 +279,6 @@ export type ALL_POSTS_QUERYResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"post\" && defined(slug.current)] {\n    _id,\n    title,\n    slug,\n    author-> {\n      name,\n      slug\n    },\n    mainImage {\n      asset->,\n      alt\n      },\n    publishedAt\n  }| order(publishedAt asc)": ALL_POSTS_QUERYResult;
+    "*[_type == \"post\" && defined(slug.current)] {\n    _id,\n    title,\n    slug,\n    author-> {\n      name,\n      slug\n    },\n    mainImage {\n      asset->,\n      alt\n      },\n    publishedAt\n  }| order(publishedAt asc)": AllPostsQueryResult;
   }
 }

@@ -1,8 +1,9 @@
-import { groq, type SanityDocument } from 'next-sanity';
+import { groq } from 'next-sanity';
 import { client } from '@/sanity/lib/client';
+import { AllPostsQueryResult } from '@/sanity.types.js';
 
-export async function getAllPosts() {
-  const ALL_POSTS_QUERY = groq`*[_type == "post" && defined(slug.current)] {
+export async function getAllPosts(): Promise<AllPostsQueryResult> {
+  const allPostsQuery = groq`*[_type == "post" && defined(slug.current)] {
     _id,
     title,
     slug,
@@ -17,6 +18,6 @@ export async function getAllPosts() {
     publishedAt
   }| order(publishedAt asc)`;
 
-  const result = await client.fetch(ALL_POSTS_QUERY);
+  const result = await client.fetch(allPostsQuery);
   return result;
 }
