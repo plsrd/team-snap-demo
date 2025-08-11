@@ -1,5 +1,6 @@
 import SiteWrapper from '@/components/SiteWrapper';
 import { getPost } from '@/sanity/lib/sanity.queries';
+import { notFound } from 'next/navigation.js';
 
 type PostProps = {
   params: Promise<{ slug: string }>;
@@ -12,10 +13,14 @@ export default async function Post({ params, searchParams }: PostProps) {
   // Fetch the post data from Sanity using the slug
   const post = await getPost(slug);
 
+  if (!post) {
+    notFound();
+  }
+
   return (
     <SiteWrapper searchParams={searchParams}>
       <article className='mx-auto max-w-3xl space-y-3'>
-        {post ? (
+        {post && (
           <>
             <h1 className='text-3xl font-bold tracking-tight'>{post.title}</h1>
             <p className='text-muted-foreground'>By {post.author?.name}</p>
@@ -24,15 +29,6 @@ export default async function Post({ params, searchParams }: PostProps) {
               {
                 'This is a placeholder for the post content. We would use the @portabletext/react package to render the body content here in a real blog.'
               }
-            </p>
-          </>
-        ) : (
-          <>
-            <h1 className='text-3xl font-bold tracking-tight'>
-              Post Not Found
-            </h1>
-            <p className='text-muted-foreground'>
-              The post you are looking for does not exist.
             </p>
           </>
         )}
