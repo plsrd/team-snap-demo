@@ -14,11 +14,7 @@ export default function PostCard({
 }: Post) {
   if (!slug || !author) return null;
 
-  const authorName = author.name || 'Unknown Author';
   const postHref = `/posts/${slug.current}`;
-  const postImageUrl = mainImage?.asset
-    ? urlFor(mainImage.asset).url()
-    : '/placeholder.svg';
 
   return (
     <li
@@ -27,19 +23,27 @@ export default function PostCard({
     >
       <Link href={postHref} className='block space-y-1'>
         <div className='aspect-video overflow-hidden'>
-          <Image
-            placeholder='blur'
-            blurDataURL={mainImage?.asset?.metadata?.lqip || ''}
-            src={postImageUrl}
-            alt={mainImage?.alt || `Hero image for ${title}`}
-            width={400}
-            height={200}
-            className='h-full w-full object-cover transition-transform hover:scale-105'
-          />
+          {mainImage?.asset ? (
+            <Image
+              placeholder='blur'
+              blurDataURL={mainImage?.asset?.metadata?.lqip || ''}
+              src={(mainImage?.asset && urlFor(mainImage.asset).url()) || ''}
+              alt={mainImage?.alt || `Hero image for ${title}`}
+              width={400}
+              height={200}
+              className='h-full w-full object-cover transition-transform hover:scale-105'
+            />
+          ) : (
+            <div className='h-full w-full bg-muted flex items-center justify-center'>
+              <span className='text-muted-foreground' />
+            </div>
+          )}
         </div>
         <div className='p-4 space-y-1'>
           <h2 className='text-lg font-medium'>{title}</h2>
-          <p className='text-sm text-muted-foreground'>By {authorName}</p>
+          <p className='text-sm text-muted-foreground'>
+            By {author.name || 'Unknown Author'}
+          </p>
         </div>
       </Link>
     </li>

@@ -57,7 +57,7 @@ export default function SiteFooter() {
           <p className='order-2 md:order-1'>
             {'© '}
             {new Date().getFullYear()}
-            {' TeamSnap Challenge By RD Pennell. All rights reserved.'}
+            {' TeamSnap Challenge By RD Pennell'}
           </p>
           <nav className='order-1 md:order-2 flex gap-4'>
             <Link href='/' className='hover:underline underline-offset-4'>
