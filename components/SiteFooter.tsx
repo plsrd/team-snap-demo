@@ -40,6 +40,11 @@ export default function SiteFooter() {
     };
   }, []);
 
+  const reset = () => {
+    localStorage.removeItem('utm_data');
+    setUtm(null);
+  };
+
   return (
     <footer className='border-t bg-background'>
       <div className='container mx-auto px-4 py-6 text-sm text-muted-foreground'>
@@ -63,6 +68,13 @@ export default function SiteFooter() {
             <span className='font-medium text-foreground'>
               Campaign Tracking
             </span>
+            <button
+              onClick={reset}
+              className='text-xs underline underline-offset-4 hover:text-foreground'
+              aria-label='Clear stored UTM tracking'
+            >
+              Reset
+            </button>
           </div>
           {utm && Object.keys(utm).length > 0 ? (
             <ul className='mt-2 grid gap-1 text-xs sm:grid-cols-2 md:grid-cols-3'>
