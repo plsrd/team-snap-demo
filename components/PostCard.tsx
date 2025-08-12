@@ -28,7 +28,7 @@ export default function PostCard({
               placeholder='blur'
               blurDataURL={mainImage?.asset?.metadata?.lqip || ''}
               src={(mainImage?.asset && urlFor(mainImage.asset).url()) || ''}
-              alt={mainImage?.alt || `Hero image for ${title}`}
+              alt={mainImage?.alt || ''}
               width={400}
               height={200}
               className='h-full w-full object-cover transition-transform hover:scale-105'

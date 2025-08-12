@@ -10,7 +10,6 @@ export default async function Home({
 
   return (
     <SiteWrapper searchParams={params}>
-      {' '}
       <section className='mx-auto max-w-3xl space-y-6 text-center'>
         <div className='inline-block rounded-full bg-muted px-3 py-1 text-xs text-muted-foreground'>
           Welcome!

@@ -31,6 +31,11 @@ A Next.js blog application built for the TeamSnap coding challenge, featuring UT
 - npm, yarn, or pnpm
 - A Sanity account
 
+## Considerations, Assumptions, and Tradeoffs
+
+- I relied heavily on TailwindCSS for quick styling.
+- Originally, I wanted the `SiteWrapper` component to be used inside of the Layout component. However, I needed to pass search params from each page to the dependency array of the useEffect hook in `UtmTracker.tsx` to prevent unnecessary re-renders while allowing it to rerender on each page load. I decided that if the page was responsible for passing data to the `SiteWrapper`, it should also be responsible for rendering it.
+
 ### Installation
 
 1. Clone the repository:
@@ -129,10 +134,5 @@ team-snap-demo/
 ## Content Management
 
 Access`http://localhost:3000/studio` in development to create and manage blog posts using the Sanity Studio interface.
-
-## Considerations
-
-- The vast majority of my experience is working specifically with Sanity, so I relied heavily on Tailwind CSS for styling. I used Vercel's V0 to generate the initial design, which I then modified to suit the blog's needs.
-- I'm new to working with/implementing UTM tracking, so the method I used may not be the most efficient. Given more time I would have done more research on best practices.
 
 **Built by RD Pennell for TeamSnap Challenge**

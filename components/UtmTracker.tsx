@@ -8,6 +8,16 @@ export type UTMTrackerProps = {
   initialSearchParams?: SearchParams;
 };
 
+const TRACKABLE_KEYS = [
+  'utm_source',
+  'utm_medium',
+  'utm_campaign',
+  'utm_term',
+  'utm_content',
+  'gclid',
+  'fbclid',
+];
+
 export default function UtmTracker(
   { initialSearchParams = {} }: UTMTrackerProps = { initialSearchParams: {} }
 ) {
@@ -29,21 +39,11 @@ export default function UtmTracker(
       if (Array.isArray(val) && val.length > 0) urlParams.set(key, val[0]!);
     }
 
-    const trackableKeys = [
-      'utm_source',
-      'utm_medium',
-      'utm_campaign',
-      'utm_term',
-      'utm_content',
-      'gclid',
-      'fbclid',
-    ];
-
     // Extract only the trackable UTM parameters from the URL
     const found = Object.fromEntries(
-      trackableKeys
-        .map(k => [k, urlParams.get(k) || ''] as const)
-        .filter(([, v]) => v && v.trim().length > 0)
+      TRACKABLE_KEYS.map(k => [k, urlParams.get(k) || ''] as const).filter(
+        ([, v]) => v && v.trim().length > 0
+      )
     ) as Record<string, string>;
 
     // If no trackable UTM parameters are found, do nothing
