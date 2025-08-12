@@ -92,7 +92,7 @@ You can seed the blog with sample data using the provided `data.tar.gz` file.
 **Import from data.tar.gz**
 
 ```bash
-sanity dataset import data.tar.gz development
+sanity dataset import data.tar.gz <your-dataset-name>
 ```
 
 ### Development
