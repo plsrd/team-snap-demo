@@ -35,6 +35,7 @@ A Next.js blog application built for the TeamSnap coding challenge, featuring UT
 
 - I relied heavily on TailwindCSS for quick styling.
 - Originally, I wanted the `SiteWrapper` component to be used inside of the Layout component. However, I needed to pass search params from each page to the dependency array of the useEffect hook in `UtmTracker.tsx` to prevent unnecessary re-renders while allowing it to rerender on each page load. I decided that if the page was responsible for passing data to the `SiteWrapper`, it should also be responsible for rendering it.
+- Given the time constraints and deliverables outlined in the challenge, I chose not to render the `body` content of the blog posts and simply added placeholder text. This could be easily extended to include block content from Sanity.
 
 ### Installation
 
