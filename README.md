@@ -133,6 +133,6 @@ Access`http://localhost:3000/studio` in development to create and manage blog po
 ## Considerations
 
 - The vast majority of my experience is working specifically with Sanity, so I relied heavily on Tailwind CSS for styling. I used Vercel's V0 to generate the initial design, which I then modified to suit the blog's needs.
-- I'm new to working with/implementing UTM tracking, so the method I used may not be the most efficient.
+- I'm new to working with/implementing UTM tracking, so the method I used may not be the most efficient. Given more time I would have done more research on best practices.
 
 **Built by RD Pennell for TeamSnap Challenge**
