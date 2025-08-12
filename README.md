@@ -77,15 +77,17 @@ npm install -g @sanity/cli
 sanity login
 ```
 
-3. Initialize your Sanity project (if not already done):
+3. Create a new Sanity project:
 
-```bash
-sanity init
-```
+_This step is optional if you already have a Sanity project set up._
+
+- Go to the [Sanity Studio](https://www.sanity.io/manage) and create a new project.
+- Follow the prompts to set up your project and dataset.
+- Once created, copy your project ID and dataset name. Dataset name can be found in the Datasets tab.
 
 ### Seeding Data
 
-To populate your blog with sample content:
+You can seed the blog with sample data using the provided `data.tar.gz` file.
 
 **Import from data.tar.gz**
 
