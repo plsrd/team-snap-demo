@@ -81,7 +81,7 @@ sanity login
 
 _This step is optional if you already have a Sanity project set up._
 
-- Go to the [Sanity Studio](https://www.sanity.io/manage) and create a new project.
+- Go to the [Sanity Manage Dashboard](https://www.sanity.io/manage) and create a new project.
 - Follow the prompts to set up your project and dataset.
 - Once created, copy your project ID and dataset name. Dataset name can be found in the Datasets tab.
 
